@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -16,6 +17,15 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    containerHeader: {
+      center: true,
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+
+    fontFamily: { Poppins: ["Poppins, sans - serif"] },
+
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -51,6 +61,11 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "bookmark-purple": "#5267DF",
+        "bookmark-red": "#FA5959",
+        "bookmark-blue": "#242A45",
+        "bookmark-grey": "#9194A2",
+        "bookmark-white": "#f7f7f7",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -71,6 +86,7 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+
     },
   },
   plugins: [require("tailwindcss-animate")],

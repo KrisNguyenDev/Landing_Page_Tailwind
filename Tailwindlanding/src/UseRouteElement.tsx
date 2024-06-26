@@ -1,11 +1,16 @@
 import { useRoutes } from "react-router-dom";
-import Login from "./pages/Login";
+import MainLayout from "./layouts/MainLayout/MainLayout";
+import HomePage from "./pages/HomePage";
 
 export default function UseRouteElement() {
   const routeElement = useRoutes([
     {
       path: "/",
-      element: <Login />,
+      element: (
+        <MainLayout>
+          <HomePage />
+        </MainLayout>
+      ),
     },
   ]);
 
