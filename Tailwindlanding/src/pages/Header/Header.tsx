@@ -55,7 +55,7 @@ export default function Header() {
     <header className="containerHeader flex items-center px-4 mt-1">
       {/* LOGO */}
       <div className="flex-1">
-        <Link to="">
+        <Link to="/">
           <img src={logo} alt="logo"></img>
         </Link>
       </div>
