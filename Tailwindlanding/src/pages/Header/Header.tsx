@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -7,11 +8,12 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-
 import { Link } from 'react-router-dom'
-
+import {} from 'module'
 import { cn } from '@/lib/utils'
-import React from 'react'
+import logo from '@/assets/logo-bookmark.svg'
+import { Button } from '@/components/ui/button'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -50,13 +52,21 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function Header() {
   return (
-    <header className="containerHeader">
-      <NavigationMenu>
-        <NavigationMenuList className="text-red-500">
+    <header className="containerHeader flex items-center px-4 mt-1">
+      {/* LOGO */}
+      <div className="flex-1">
+        <Link to="">
+          <img src={logo} alt="logo"></img>
+        </Link>
+      </div>
+
+      {/* NAVIGATION */}
+      <NavigationMenu className="max-w-none hidden md:block">
+        <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+              <ul className="grid gap-3 p-6  md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 <li className="row-span-3">
                   <NavigationMenuLink asChild>
                     <a
@@ -66,7 +76,7 @@ export default function Header() {
                       {/* <Icons.logo className="h-6 w-6" /> */}
                       <span>Icon</span>
                       <div className="mb-2 mt-4 text-lg font-medium">shadcn/ui</div>
-                      <p className="text-sm leading-tight text-muted-foreground">
+                      <p className="text-sm leading-tight text-muted-foreground text-wrap">
                         Beautifully designed components that you can copy and paste into your apps. Accessible.
                         Customizable. Open Source.
                       </p>
@@ -104,6 +114,51 @@ export default function Header() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
+
+      {/* BUTTON LOGIN */}
+      <Link to="login">
+        <Button className="hidden md:block bg-blue-500 hover:bg-blue-700">Login</Button>
+      </Link>
+
+      {/* SIDEBAR MENU */}
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button variant="outline" size="icon" className="shrink-0 md:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <span className="sr-only">Toggle navigation menu</span>
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="right">
+          <nav className="grid gap-6 text-lg font-medium">
+            <Link to="" className="flex items-center gap-2 text-lg font-semibold">
+              <span className="sr-only">Acme Inc</span>
+            </Link>
+            <Link to="" className="text-muted-foreground hover:text-foreground">
+              Dashboard
+            </Link>
+            <Link to="" className="text-muted-foreground hover:text-foreground">
+              Orders
+            </Link>
+            <Link to="" className="text-muted-foreground hover:text-foreground">
+              Products
+            </Link>
+            <Link to="" className="text-muted-foreground hover:text-foreground">
+              Customers
+            </Link>
+            <Link to="" className="text-muted-foreground hover:text-foreground">
+              Settings
+            </Link>
+          </nav>
+        </SheetContent>
+      </Sheet>
     </header>
   )
 }
@@ -116,7 +171,7 @@ const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWit
           <a
             ref={ref}
             className={cn(
-              'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+              'block relative select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
               className,
             )}
             {...props}
