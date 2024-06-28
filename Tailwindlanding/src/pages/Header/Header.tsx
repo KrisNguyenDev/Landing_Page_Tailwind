@@ -52,7 +52,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function Header() {
   return (
-    <header className="containerHeader flex items-center px-4 mt-1">
+    <header className="container mt-12 flex items-center px-4 bg-opacity-70">
       {/* LOGO */}
       <div className="flex-1">
         <Link to="/">
@@ -99,7 +99,7 @@ export default function Header() {
             <NavigationMenuTrigger>Components</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                {components.map((component) => (
+                {components?.map((component) => (
                   <ListItem key={component.title} title={component.title} href={component.href}>
                     {component.description}
                   </ListItem>
